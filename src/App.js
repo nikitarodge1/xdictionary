@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import './App.css';
 
@@ -14,11 +13,16 @@ function App() {
   const [result, setResult] = useState('');
 
   const handleSearch = () => {
+    if (!searchTerm.trim()) {
+      setResult("Word not found in the dictionary.");
+      return;
+    }
+
     const found = dictionary.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
     if (found) {
-      setResult(<p><strong>Definition:</strong> {found.meaning}</p>);
+      setResult(<span><strong>Definition:</strong> {found.meaning}</span>);
     } else {
-      setResult(<p>Word not found in the dictionary.</p>);
+      setResult("Word not found in the dictionary.");
     }
   };
 
@@ -29,13 +33,12 @@ function App() {
         type="text"
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        placeholder="Search for a word..."
+        placeholder="Enter a word"
       />
       <button onClick={handleSearch}>Search</button>
-      <p>{result}</p>
+      <div>{result}</div>
     </div>
   );
 }
 
 export default App;
-
