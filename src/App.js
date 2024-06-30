@@ -16,7 +16,7 @@ function App() {
   const handleSearch = () => {
     const found = dictionary.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
     if (found) {
-      setResult(<p><strong>Defination:</strong> {found.meaning}</p>);
+      setResult(<p><strong>Definition:</strong> {found.meaning}</p>);
     } else {
       setResult(<p>Word not found in the dictionary.</p>);
     }
