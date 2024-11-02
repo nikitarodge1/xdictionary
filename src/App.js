@@ -16,7 +16,7 @@ function App() {
   const handleSearch = () => {
     const found = dictionary.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
     if (found) {
-      setResult(<p><strong>Definition:</strong> {found.meaning}</p>);
+      setResult(<p> {found.meaning}</p>);
     } else {
       setResult(<p>Word not found in the dictionary.</p>);
     }
@@ -32,9 +32,14 @@ function App() {
         placeholder="Enter a word"
       />
       <button onClick={()=> handleSearch()}>Search</button>
+      <br/>
+      <strong>Definition:</strong>
+      <br/>
       {result}
     </div>
   );
 }
+
+
 
 export default App;
