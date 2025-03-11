@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import './App.css';
 
@@ -16,30 +15,31 @@ function App() {
   const handleSearch = () => {
     const found = dictionary.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
     if (found) {
-      setResult(<p> {found.meaning}</p>);
+      setResult(found.meaning);
     } else {
-      setResult(<p>Word not found in the dictionary.</p>);
+      setResult('Word not found in the dictionary.');
     }
   };
 
   return (
     <div className="App">
-      <h1>XDictionary</h1>
+      <h1>Dictionary App</h1>
       <input
         type="text"
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
-        placeholder="Enter a word"
+        placeholder="Search for a word..."
       />
-      <button onClick={()=> handleSearch()}>Search</button>
-      <br/>
-      <strong>Definition:</strong>
-      <br/>
-      {result}
+      <button onClick={handleSearch}>Search</button>
+
+      {result && (
+        <>
+          <h3>Definition:</h3>
+          <p>{result}</p>
+        </>
+      )}
     </div>
   );
 }
-
-
 
 export default App;
