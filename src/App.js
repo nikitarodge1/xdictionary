@@ -32,12 +32,9 @@ function App() {
       />
       <button onClick={handleSearch}>Search</button>
 
-      {result && (
-        <>
-          <h3>Definition:</h3>
-          <p>{result}</p>
-        </>
-      )}
+      {/* Show 'Definition:' by default */}
+      <h3>Definition:</h3>
+      <p>{result || 'Please search for a word.'}</p>
     </div>
   );
 }
